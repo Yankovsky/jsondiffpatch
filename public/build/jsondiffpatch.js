@@ -126,11 +126,13 @@ DiffContext.prototype.setResult = function(result) {
       this.options.cloneDiffValues : function(value) {
         return JSON.parse(JSON.stringify(value), dateReviver);
       };
-    if (typeof result[0] === 'object') {
-      result[0] = clone(result[0]);
-    }
-    if (typeof result[1] === 'object') {
-      result[1] = clone(result[1]);
+    if (result) {
+      if (typeof result[0] === 'object') {
+        result[0] = clone(result[0]);
+      }
+      if (typeof result[1] === 'object') {
+        result[1] = clone(result[1]);
+      }
     }
   }
   return Context.prototype.setResult.apply(this, arguments);
